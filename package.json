@@ -21,12 +21,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/wztools.git"
+    "url": "https://github.com/krisho007/wztools.git"
   },
   "bugs": {
-    "url": "https://github.com/your-username/wztools/issues"
+    "url": "https://github.com/krisho007/wztools/issues"
   },
-  "homepage": "https://github.com/your-username/wztools#readme",
+  "homepage": "https://github.com/krisho007/wztools#readme",
   "files": [
     "dist/",
     "README.md",

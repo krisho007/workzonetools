@@ -30,12 +30,12 @@ This guide explains how to publish the wztools CLI to npm.
    {
      "repository": {
        "type": "git",
-       "url": "https://github.com/YOUR-USERNAME/wztools.git"
+       "url": "https://github.com/krisho007/wztools.git"
      },
      "bugs": {
-       "url": "https://github.com/YOUR-USERNAME/wztools/issues"
+       "url": "https://github.com/krisho007/wztools/issues"
      },
-     "homepage": "https://github.com/YOUR-USERNAME/wztools#readme"
+     "homepage": "https://github.com/krisho007/wztools#readme"
    }
    ```
 
