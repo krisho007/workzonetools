@@ -18,6 +18,8 @@ program
   .description('Initialize workzonetools configuration')
   .option('--client-id <clientId>', 'OAuth client ID')
   .option('--client-secret <clientSecret>', 'OAuth client secret')
+  .option('--user-id <userId>', 'User ID for authentication')
+  .option('--password <password>', 'User password for authentication')
   .option('--xsuaa-url <xsuaaUrl>', 'XSUAA authentication URL')
   .option('--workzone-host <workzoneHost>', 'Work Zone host (e.g., <subdomain>.dt.launchpad.cfapps.<region>.hana.ondemand.com)')
   .option('--subdomain <subdomain>', 'SAP subdomain')
@@ -27,6 +29,8 @@ program
       await initCommand({
         clientId: options.clientId,
         clientSecret: options.clientSecret,
+        userId: options.userId,
+        password: options.password,
         xsuaaUrl: options.xsuaaUrl,
         workzoneHost: options.workzoneHost,
         subdomain: options.subdomain,

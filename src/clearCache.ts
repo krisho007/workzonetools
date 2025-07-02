@@ -6,9 +6,11 @@ export async function getAccessToken(config: WzToolsConfig): Promise<string> {
   const tokenUrl = `${config.xsuaaUrl}/oauth/token`;
   
   const params = new URLSearchParams();
-  params.append('grant_type', 'client_credentials');
+  params.append('grant_type', 'password');
   params.append('client_id', config.clientId);
   params.append('client_secret', config.clientSecret);
+  params.append('username', config.userId);
+  params.append('password', config.password);
 
   try {
     const response = await axios.post<TokenResponse>(tokenUrl, params, {

@@ -1,6 +1,8 @@
 export interface WzToolsConfig {
   clientId: string;
   clientSecret: string;
+  userId: string;
+  password: string;
   xsuaaUrl: string;
   workzoneHost: string;
   subdomain: string;
@@ -25,6 +27,8 @@ export interface ClearCacheRequest {
 export interface InitOptions {
   clientId?: string;
   clientSecret?: string;
+  userId?: string;
+  password?: string;
   xsuaaUrl?: string;
   workzoneHost?: string;
   subdomain?: string;

@@ -32,6 +32,8 @@ workzonetools init
 This will prompt you for all required configuration values:
 - Client ID
 - Client Secret (hidden input)
+- User ID
+- User Password (hidden input)
 - XSUAA URL
 - Work Zone Host
 - Subdomain
@@ -43,6 +45,8 @@ This will prompt you for all required configuration values:
 workzonetools init \
   --client-id "your-client-id" \
   --client-secret "your-client-secret" \
+  --user-id "your-user-id" \
+  --password "your-password" \
   --xsuaa-url "https://<subdomain>.authentication.<region>.hana.ondemand.com" \
   --workzone-host "<subdomain>.dt.launchpad.cfapps.<region>.hana.ondemand.com" \
   --subdomain "your-subdomain" \
@@ -78,6 +82,8 @@ Example configuration file:
 {
   "clientId": "your-client-id",
   "clientSecret": "your-client-secret",
+  "userId": "your-user-id",
+  "password": "your-password",
   "xsuaaUrl": "https://<subdomain>.authentication.<region>.hana.ondemand.com",
   "workzoneHost": "<subdomain>.dt.launchpad.cfapps.<region>.hana.ondemand.com",
   "subdomain": "your-subdomain",
@@ -112,6 +118,8 @@ jobs:
            workzonetools init \
              --client-id "${{ secrets.SAP_CLIENT_ID }}" \
              --client-secret "${{ secrets.SAP_CLIENT_SECRET }}" \
+             --user-id "${{ secrets.SAP_USER_ID }}" \
+             --password "${{ secrets.SAP_PASSWORD }}" \
              --xsuaa-url "${{ secrets.SAP_XSUAA_URL }}" \
              --workzone-host "${{ secrets.SAP_WORKZONE_HOST }}" \
              --subdomain "${{ secrets.SAP_SUBDOMAIN }}" \
@@ -137,6 +145,8 @@ pipeline {
                                                   workzonetools init \
                            --client-id "${SAP_CLIENT_ID}" \
                            --client-secret "${SAP_CLIENT_SECRET}" \
+                           --user-id "${SAP_USER_ID}" \
+                           --password "${SAP_PASSWORD}" \
                            --xsuaa-url "${SAP_XSUAA_URL}" \
                            --workzone-host "${SAP_WORKZONE_HOST}" \
                            --subdomain "${SAP_SUBDOMAIN}" \
@@ -156,8 +166,9 @@ pipeline {
 ### OAuth Token Request
 - **Endpoint**: `${xsuaaUrl}/oauth/token`
 - **Method**: POST
-- **Grant Type**: client_credentials
+- **Grant Type**: password (Resource Owner Password Credentials)
 - **Content-Type**: application/x-www-form-urlencoded
+- **Parameters**: client_id, client_secret, username, password
 
 ### Work Zone Cache Clear Request
 - **Endpoint**: `https://<workzoneHost>/semantic/entity/provider/html5`

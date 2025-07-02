@@ -10,6 +10,8 @@ export async function initCommand(options: InitOptions): Promise<void> {
   const config: WzToolsConfig = {
     clientId: '',
     clientSecret: '',
+    userId: '',
+    password: '',
     xsuaaUrl: '',
     workzoneHost: '',
     subdomain: '',
@@ -17,11 +19,13 @@ export async function initCommand(options: InitOptions): Promise<void> {
   };
 
   // If all options are provided via CLI flags, use them directly
-  if (options.clientId && options.clientSecret && options.xsuaaUrl && 
-      options.workzoneHost && options.subdomain && options.subaccountId) {
+  if (options.clientId && options.clientSecret && options.userId && options.password && 
+      options.xsuaaUrl && options.workzoneHost && options.subdomain && options.subaccountId) {
     
     config.clientId = options.clientId;
     config.clientSecret = options.clientSecret;
+    config.userId = options.userId;
+    config.password = options.password;
     config.xsuaaUrl = options.xsuaaUrl;
     config.workzoneHost = options.workzoneHost;
     config.subdomain = options.subdomain;
@@ -47,6 +51,21 @@ export async function initCommand(options: InitOptions): Promise<void> {
         message: 'Client Secret:',
         default: options.clientSecret,
         validate: (input: string) => input.trim() !== '' || 'Client Secret is required',
+        mask: '*',
+      },
+      {
+        type: 'input',
+        name: 'userId',
+        message: 'User ID:',
+        default: options.userId,
+        validate: (input: string) => input.trim() !== '' || 'User ID is required',
+      },
+      {
+        type: 'password',
+        name: 'password',
+        message: 'User Password:',
+        default: options.password,
+        validate: (input: string) => input.trim() !== '' || 'User Password is required',
         mask: '*',
       },
       {
