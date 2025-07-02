@@ -9,13 +9,13 @@ import { configExists, getConfigPath } from './config.js';
 const program = new Command();
 
 program
-  .name('wztools')
+  .name('workzonetools')
   .description('CLI tool for managing SAP Work Zone HTML5 content provider cache refresh')
   .version('1.0.0');
 
 program
   .command('init')
-  .description('Initialize wztools configuration')
+  .description('Initialize workzonetools configuration')
   .option('--client-id <clientId>', 'OAuth client ID')
   .option('--client-secret <clientSecret>', 'OAuth client secret')
   .option('--xsuaa-url <xsuaaUrl>', 'XSUAA authentication URL')
@@ -58,18 +58,18 @@ program
   .command('status')
   .description('Show current configuration status')
   .action(() => {
-    console.log(chalk.blue('📊 wztools Status'));
+    console.log(chalk.blue('📊 workzonetools Status'));
     console.log();
     
     if (configExists()) {
       console.log(chalk.green('✅ Configuration file exists'));
       console.log(chalk.gray(`   Location: ${getConfigPath()}`));
       console.log();
-      console.log(chalk.blue('🚀 Ready to use: wztools clear_cache'));
+      console.log(chalk.blue('🚀 Ready to use: workzonetools clear_cache'));
     } else {
       console.log(chalk.yellow('⚠️  Configuration file not found'));
       console.log();
-      console.log(chalk.blue('💡 Run: wztools init'));
+      console.log(chalk.blue('💡 Run: workzonetools init'));
     }
   });
 
@@ -78,11 +78,11 @@ program.on('command:*', () => {
   console.error(chalk.red('❌ Invalid command: %s'), program.args.join(' '));
   console.log();
   console.log(chalk.blue('Available commands:'));
-  console.log(chalk.gray('  wztools init        - Initialize configuration'));
-  console.log(chalk.gray('  wztools clear_cache - Clear Work Zone cache'));
-  console.log(chalk.gray('  wztools status      - Show configuration status'));
+  console.log(chalk.gray('  workzonetools init        - Initialize configuration'));
+  console.log(chalk.gray('  workzonetools clear_cache - Clear Work Zone cache'));
+  console.log(chalk.gray('  workzonetools status      - Show configuration status'));
   console.log();
-  console.log(chalk.blue('Use "wztools --help" for more information'));
+  console.log(chalk.blue('Use "workzonetools --help" for more information'));
   process.exit(1);
 });
 

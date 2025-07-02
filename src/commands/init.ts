@@ -4,7 +4,7 @@ import { saveConfig } from '../config.js';
 import { WzToolsConfig, InitOptions } from '../types.js';
 
 export async function initCommand(options: InitOptions): Promise<void> {
-  console.log(chalk.blue('🚀 Initializing wztools configuration...'));
+  console.log(chalk.blue('🚀 Initializing workzonetools configuration...'));
   console.log();
 
   const config: WzToolsConfig = {
@@ -95,9 +95,9 @@ export async function initCommand(options: InitOptions): Promise<void> {
     saveConfig(config);
     console.log();
     console.log(chalk.green('✅ Configuration saved successfully!'));
-    console.log(chalk.gray(`   Config file: ~/.wztools/config.json`));
+    console.log(chalk.gray(`   Config file: ~/.workzonetools/config.json`));
     console.log();
-    console.log(chalk.blue('🎉 You can now run: wztools clear_cache'));
+    console.log(chalk.blue('🎉 You can now run: workzonetools clear_cache'));
   } catch (error) {
     console.error(chalk.red('❌ Failed to save configuration:'));
     console.error(chalk.red(`   ${error instanceof Error ? error.message : 'Unknown error'}`));

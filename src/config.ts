@@ -3,7 +3,7 @@ import os from 'os';
 import path from 'path';
 import { WzToolsConfig } from './types.js';
 
-const CONFIG_DIR = path.join(os.homedir(), '.wztools');
+const CONFIG_DIR = path.join(os.homedir(), '.workzonetools');
 const CONFIG_FILE = path.join(CONFIG_DIR, 'config.json');
 
 export function ensureConfigDir(): void {
@@ -21,7 +21,7 @@ export function saveConfig(config: WzToolsConfig): void {
 
 export function loadConfig(): WzToolsConfig {
   if (!fs.existsSync(CONFIG_FILE)) {
-    throw new Error('Configuration file not found. Please run "wztools init" first.');
+    throw new Error('Configuration file not found. Please run "workzonetools init" first.');
   }
   
   try {

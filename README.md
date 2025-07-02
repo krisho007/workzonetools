@@ -1,4 +1,4 @@
-# wztools
+# workzonetools
 
 A TypeScript CLI tool for managing SAP Work Zone HTML5 content provider cache refresh.
 
@@ -16,14 +16,14 @@ A TypeScript CLI tool for managing SAP Work Zone HTML5 content provider cache re
 ### Global Installation (Recommended)
 
 ```bash
-npm install -g wztools
+npm install -g workzonetools
 ```
 
 ### Local Development
 
 ```bash
 git clone <repository-url>
-cd wztools
+cd workzonetools
 npm install
 npm run build
 npm link
@@ -36,7 +36,7 @@ npm link
 #### Interactive Mode (Recommended for first-time setup)
 
 ```bash
-wztools init
+workzonetools init
 ```
 
 This will prompt you for all required configuration values:
@@ -50,7 +50,7 @@ This will prompt you for all required configuration values:
 #### Non-Interactive Mode (CI/CD)
 
 ```bash
-wztools init \
+workzonetools init \
   --client-id "your-client-id" \
   --client-secret "your-client-secret" \
   --xsuaa-url "https://your-subdomain.authentication.sap.hana.ondemand.com" \
@@ -62,7 +62,7 @@ wztools init \
 ### 2. Clear Cache
 
 ```bash
-wztools clear_cache
+workzonetools clear_cache
 ```
 
 This command will:
@@ -74,14 +74,14 @@ This command will:
 ### 3. Check Status
 
 ```bash
-wztools status
+workzonetools status
 ```
 
 Shows whether your configuration is set up and ready to use.
 
 ## Configuration
 
-Configuration is stored in `~/.wztools/config.json` with secure file permissions (600 on Unix systems).
+Configuration is stored in `~/.workzonetools/config.json` with secure file permissions (600 on Unix systems).
 
 Example configuration file:
 ```json
@@ -114,12 +114,12 @@ jobs:
         with:
           node-version: '18'
       
-      - name: Install wztools
-        run: npm install -g wztools
-      
-      - name: Initialize wztools
-        run: |
-          wztools init \
+             - name: Install workzonetools
+         run: npm install -g workzonetools
+       
+       - name: Initialize workzonetools
+         run: |
+           workzonetools init \
             --client-id "${{ secrets.SAP_CLIENT_ID }}" \
             --client-secret "${{ secrets.SAP_CLIENT_SECRET }}" \
             --xsuaa-url "${{ secrets.SAP_XSUAA_URL }}" \
@@ -127,8 +127,8 @@ jobs:
             --subdomain "${{ secrets.SAP_SUBDOMAIN }}" \
             --subaccount-id "${{ secrets.SAP_SUBACCOUNT_ID }}"
       
-      - name: Clear Work Zone cache
-        run: wztools clear_cache
+             - name: Clear Work Zone cache
+         run: workzonetools clear_cache
 ```
 
 ### Jenkins Pipeline Example
@@ -141,18 +141,18 @@ pipeline {
         stage('Clear Work Zone Cache') {
             steps {
                 script {
-                    sh '''
-                        npm install -g wztools
-                        
-                        wztools init \
+                                         sh '''
+                         npm install -g workzonetools
+                         
+                         workzonetools init \
                           --client-id "${SAP_CLIENT_ID}" \
                           --client-secret "${SAP_CLIENT_SECRET}" \
                           --xsuaa-url "${SAP_XSUAA_URL}" \
                           --wz-url "${SAP_WZ_URL}" \
                           --subdomain "${SAP_SUBDOMAIN}" \
                           --subaccount-id "${SAP_SUBACCOUNT_ID}"
-                        
-                        wztools clear_cache
+                                                 
+                         workzonetools clear_cache
                     '''
                 }
             }
@@ -193,7 +193,7 @@ pipeline {
 ### Setup
 ```bash
 git clone <repository-url>
-cd wztools
+cd workzonetools
 npm install
 ```
 
@@ -205,7 +205,7 @@ npm install
 
 ### Project Structure
 ```
-wztools/
+workzonetools/
 ├── src/
 │   ├── commands/
 │   │   ├── init.ts          # Init command implementation

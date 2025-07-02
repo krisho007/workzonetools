@@ -20,7 +20,7 @@ export async function clearCacheCommand(): Promise<void> {
     
     if (error instanceof Error && error.message.includes('Configuration file not found')) {
       console.log();
-      console.log(chalk.yellow('💡 Hint: Run "wztools init" first to set up your configuration'));
+      console.log(chalk.yellow('💡 Hint: Run "workzonetools init" first to set up your configuration'));
     }
     
     process.exit(1);

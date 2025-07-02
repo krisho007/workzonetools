@@ -1,11 +1,11 @@
 {
-  "name": "wztools",
+  "name": "workzonetools",
   "version": "1.0.0",
   "description": "CLI tool for managing SAP Work Zone HTML5 content provider cache refresh",
   "main": "dist/index.js",
   "type": "module",
   "bin": {
-    "wztools": "./dist/index.js"
+    "workzonetools": "./dist/index.js"
   },
   "scripts": {
     "build": "tsc",
@@ -21,12 +21,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/krisho007/wztools.git"
+    "url": "https://github.com/krisho007/workzonetools.git"
   },
   "bugs": {
-    "url": "https://github.com/krisho007/wztools/issues"
+    "url": "https://github.com/krisho007/workzonetools/issues"
   },
-  "homepage": "https://github.com/krisho007/wztools#readme",
+  "homepage": "https://github.com/krisho007/workzonetools#readme",
   "files": [
     "dist/",
     "README.md",
