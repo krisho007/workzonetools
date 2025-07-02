@@ -19,7 +19,7 @@ program
   .option('--client-id <clientId>', 'OAuth client ID')
   .option('--client-secret <clientSecret>', 'OAuth client secret')
   .option('--xsuaa-url <xsuaaUrl>', 'XSUAA authentication URL')
-  .option('--wz-url <wzUrl>', 'Work Zone API URL')
+  .option('--workzone-host <workzoneHost>', 'Work Zone host (e.g., <subdomain>.dt.launchpad.cfapps.<region>.hana.ondemand.com)')
   .option('--subdomain <subdomain>', 'SAP subdomain')
   .option('--subaccount-id <subaccountId>', 'SAP subaccount ID')
   .action(async (options) => {
@@ -28,7 +28,7 @@ program
         clientId: options.clientId,
         clientSecret: options.clientSecret,
         xsuaaUrl: options.xsuaaUrl,
-        wzUrl: options.wzUrl,
+        workzoneHost: options.workzoneHost,
         subdomain: options.subdomain,
         subaccountId: options.subaccountId,
       });

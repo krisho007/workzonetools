@@ -2,7 +2,7 @@ export interface WzToolsConfig {
   clientId: string;
   clientSecret: string;
   xsuaaUrl: string;
-  wzUrl: string;
+  workzoneHost: string;
   subdomain: string;
   subaccountId: string;
 }
@@ -26,7 +26,7 @@ export interface InitOptions {
   clientId?: string;
   clientSecret?: string;
   xsuaaUrl?: string;
-  wzUrl?: string;
+  workzoneHost?: string;
   subdomain?: string;
   subaccountId?: string;
 } 

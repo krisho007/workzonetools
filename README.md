@@ -19,16 +19,6 @@ A TypeScript CLI tool for managing SAP Work Zone HTML5 content provider cache re
 npm install -g workzonetools
 ```
 
-### Local Development
-
-```bash
-git clone <repository-url>
-cd workzonetools
-npm install
-npm run build
-npm link
-```
-
 ## Usage
 
 ### 1. Initialize Configuration
@@ -43,7 +33,7 @@ This will prompt you for all required configuration values:
 - Client ID
 - Client Secret (hidden input)
 - XSUAA URL
-- Work Zone URL
+- Work Zone Host
 - Subdomain
 - Subaccount ID
 
@@ -53,10 +43,10 @@ This will prompt you for all required configuration values:
 workzonetools init \
   --client-id "your-client-id" \
   --client-secret "your-client-secret" \
-  --xsuaa-url "https://your-subdomain.authentication.sap.hana.ondemand.com" \
-  --wz-url "https://your-workzone-url/semantic/entity/provider/html5" \
+  --xsuaa-url "https://<subdomain>.authentication.<region>.hana.ondemand.com" \
+  --workzone-host "<subdomain>.dt.launchpad.cfapps.<region>.hana.ondemand.com" \
   --subdomain "your-subdomain" \
-  --subaccount-id "your-subaccount-id"
+  --subaccount-id "097b595f-58a6-49c8-ba53-ab10c62d8bcb"
 ```
 
 ### 2. Clear Cache
@@ -88,10 +78,10 @@ Example configuration file:
 {
   "clientId": "your-client-id",
   "clientSecret": "your-client-secret",
-  "xsuaaUrl": "https://your-subdomain.authentication.sap.hana.ondemand.com",
-  "wzUrl": "https://your-workzone-url/semantic/entity/provider/html5",
+  "xsuaaUrl": "https://<subdomain>.authentication.<region>.hana.ondemand.com",
+  "workzoneHost": "<subdomain>.dt.launchpad.cfapps.<region>.hana.ondemand.com",
   "subdomain": "your-subdomain",
-  "subaccountId": "your-subaccount-id"
+  "subaccountId": "097b595f-58a6-49c8-ba53-ab10c62d8bcb"
 }
 ```
 
@@ -118,14 +108,14 @@ jobs:
          run: npm install -g workzonetools
        
        - name: Initialize workzonetools
-         run: |
+                  run: |
            workzonetools init \
-            --client-id "${{ secrets.SAP_CLIENT_ID }}" \
-            --client-secret "${{ secrets.SAP_CLIENT_SECRET }}" \
-            --xsuaa-url "${{ secrets.SAP_XSUAA_URL }}" \
-            --wz-url "${{ secrets.SAP_WZ_URL }}" \
-            --subdomain "${{ secrets.SAP_SUBDOMAIN }}" \
-            --subaccount-id "${{ secrets.SAP_SUBACCOUNT_ID }}"
+             --client-id "${{ secrets.SAP_CLIENT_ID }}" \
+             --client-secret "${{ secrets.SAP_CLIENT_SECRET }}" \
+             --xsuaa-url "${{ secrets.SAP_XSUAA_URL }}" \
+             --workzone-host "${{ secrets.SAP_WORKZONE_HOST }}" \
+             --subdomain "${{ secrets.SAP_SUBDOMAIN }}" \
+             --subaccount-id "${{ secrets.SAP_SUBACCOUNT_ID }}"
       
              - name: Clear Work Zone cache
          run: workzonetools clear_cache
@@ -144,13 +134,13 @@ pipeline {
                                          sh '''
                          npm install -g workzonetools
                          
-                         workzonetools init \
-                          --client-id "${SAP_CLIENT_ID}" \
-                          --client-secret "${SAP_CLIENT_SECRET}" \
-                          --xsuaa-url "${SAP_XSUAA_URL}" \
-                          --wz-url "${SAP_WZ_URL}" \
-                          --subdomain "${SAP_SUBDOMAIN}" \
-                          --subaccount-id "${SAP_SUBACCOUNT_ID}"
+                                                  workzonetools init \
+                           --client-id "${SAP_CLIENT_ID}" \
+                           --client-secret "${SAP_CLIENT_SECRET}" \
+                           --xsuaa-url "${SAP_XSUAA_URL}" \
+                           --workzone-host "${SAP_WORKZONE_HOST}" \
+                           --subdomain "${SAP_SUBDOMAIN}" \
+                           --subaccount-id "${SAP_SUBACCOUNT_ID}"
                                                  
                          workzonetools clear_cache
                     '''
@@ -170,7 +160,7 @@ pipeline {
 - **Content-Type**: application/x-www-form-urlencoded
 
 ### Work Zone Cache Clear Request
-- **Endpoint**: `${wzUrl}`
+- **Endpoint**: `https://<workzoneHost>/semantic/entity/provider/html5`
 - **Method**: POST
 - **Content-Type**: application/json
 - **Authorization**: Bearer token

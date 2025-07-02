@@ -11,19 +11,19 @@ export async function initCommand(options: InitOptions): Promise<void> {
     clientId: '',
     clientSecret: '',
     xsuaaUrl: '',
-    wzUrl: '',
+    workzoneHost: '',
     subdomain: '',
     subaccountId: '',
   };
 
   // If all options are provided via CLI flags, use them directly
   if (options.clientId && options.clientSecret && options.xsuaaUrl && 
-      options.wzUrl && options.subdomain && options.subaccountId) {
+      options.workzoneHost && options.subdomain && options.subaccountId) {
     
     config.clientId = options.clientId;
     config.clientSecret = options.clientSecret;
     config.xsuaaUrl = options.xsuaaUrl;
-    config.wzUrl = options.wzUrl;
+    config.workzoneHost = options.workzoneHost;
     config.subdomain = options.subdomain;
     config.subaccountId = options.subaccountId;
     
@@ -52,7 +52,7 @@ export async function initCommand(options: InitOptions): Promise<void> {
       {
         type: 'input',
         name: 'xsuaaUrl',
-        message: 'XSUAA URL (e.g., https://...authentication.sap.hana.ondemand.com):',
+        message: 'XSUAA URL (e.g., https://<subdomain>.authentication.<region>.hana.ondemand.com):',
         default: options.xsuaaUrl,
         validate: (input: string) => {
           if (input.trim() === '') return 'XSUAA URL is required';
@@ -62,12 +62,14 @@ export async function initCommand(options: InitOptions): Promise<void> {
       },
       {
         type: 'input',
-        name: 'wzUrl',
-        message: 'Work Zone URL (e.g., https://.../semantic/entity/provider/html5):',
-        default: options.wzUrl,
+        name: 'workzoneHost',
+        message: 'Work Zone Host (e.g., <subdomain>.dt.launchpad.cfapps.<region>.hana.ondemand.com):',
+        default: options.workzoneHost,
         validate: (input: string) => {
-          if (input.trim() === '') return 'Work Zone URL is required';
-          if (!input.startsWith('https://')) return 'Work Zone URL must start with https://';
+          if (input.trim() === '') return 'Work Zone Host is required';
+          if (input.startsWith('https://') || input.startsWith('http://')) {
+            return 'Please provide only the hostname without protocol (e.g., <subdomain>.dt.launchpad.cfapps.<region>.hana.ondemand.com)';
+          }
           return true;
         },
       },

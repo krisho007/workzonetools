@@ -42,7 +42,10 @@ export async function clearCache(config: WzToolsConfig): Promise<void> {
       subaccountId: config.subaccountId,
     };
 
-    const response = await axios.post(config.wzUrl, clearCacheRequest, {
+    // Construct the full Work Zone URL
+    const workzoneUrl = `https://${config.workzoneHost}/semantic/entity/provider/html5`;
+
+    const response = await axios.post(workzoneUrl, clearCacheRequest, {
       headers: {
         'Authorization': `Bearer ${accessToken}`,
         'Content-Type': 'application/json',
