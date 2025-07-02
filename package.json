@@ -1,6 +1,6 @@
 {
   "name": "workzonetools",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "CLI tool for managing SAP Work Zone HTML5 content provider cache refresh",
   "main": "dist/index.js",
   "type": "module",

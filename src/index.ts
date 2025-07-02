@@ -2,16 +2,28 @@
 
 import { Command } from 'commander';
 import chalk from 'chalk';
+import { readFileSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
 import { initCommand } from './commands/init.js';
 import { clearCacheCommand } from './commands/clearCache.js';
 import { configExists, getConfigPath } from './config.js';
+
+// Get the directory of the current module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Read package.json to get the version
+const packageJsonPath = join(__dirname, '..', 'package.json');
+const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf8'));
+const version = packageJson.version;
 
 const program = new Command();
 
 program
   .name('workzonetools')
   .description('CLI tool for managing SAP Work Zone HTML5 content provider cache refresh')
-  .version('1.0.0');
+  .version(version);
 
 program
   .command('init')
