@@ -1,0 +1,50 @@
+{
+  "name": "wztools",
+  "version": "1.0.0",
+  "description": "CLI tool for managing SAP Work Zone HTML5 content provider cache refresh",
+  "main": "dist/index.js",
+  "type": "module",
+  "bin": {
+    "wztools": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "prepare": "npm run build",
+    "test": "npm run build && node dist/index.js --help",
+    "pack": "npm pack",
+    "prepack": "npm run build"
+  },
+  "keywords": ["sap", "workzone", "cli", "cache", "html5", "typescript", "nodejs"],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/wztools.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/wztools/issues"
+  },
+  "homepage": "https://github.com/your-username/wztools#readme",
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "commander": "^11.1.0",
+    "inquirer": "^9.2.12",
+    "axios": "^1.6.2",
+    "chalk": "^5.3.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.2",
+    "@types/node": "^20.10.0",
+    "@types/inquirer": "^9.0.7",
+    "ts-node": "^10.9.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+} 
